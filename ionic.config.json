@@ -1,5 +1,7 @@
 {
   "name": "Eweather",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

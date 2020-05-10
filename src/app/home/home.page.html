@@ -1,20 +1,149 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
+<ion-header [translucent]="true" >
+  <ion-toolbar color="dark">
+    <ion-title class="ion-text-center">
+      Eweather
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-grid fixed padding>
+    <ion-row>
+      <ion-col size="12">
+        <ion-searchbar
+        debounce="500"
+         cancelButtonText="Custom Cancel" animated
+         (ionBlur)="search($event)">
+        </ion-searchbar>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+      </ion-col>
+      
+    </ion-row>
+
+   
+
+    <ion-row>
+      <ion-col class="ion-align-items-center" size="12" size-lg >
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title style="color: aliceblue;">{{weather.name}}</ion-card-title>
+            <ion-card-subtitle>{{weather.sys.country}}</ion-card-subtitle>
+          </ion-card-header>
+        
+          <ion-card-content>
+            <ion-row>
+              <ion-col size="4">
+                <img src="../../assets/images/{{weather.weather[0].icon}}@2x.png" alt="icon">
+                
+              </ion-col>
+               
+                <ion-col size="6">
+                 <ion-text   color="primary">
+                   <h1> {{weather.main.temp | number: '1.0-0'}}&deg;<small>F</small></h1>
+                 </ion-text>
+                </ion-col>
+                       
+             </ion-row>
+             <ion-row>
+              <ion-col size="4">
+              <ion-text color="primary">
+               <p>{{weather.weather[0].description}}</p>
+              </ion-text>
+              </ion-col>
+             </ion-row>
+            
+            
+
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+
+
+    <ion-row>
+
+      <ion-col  size="4" >
+        <ion-card>
+          <ion-card-content>    
+            <ion-text color="primary" class="ion-text-center">
+              <h2>
+                {{weather.main.temp_max | number: '1.0-0'}}
+              </h2>
+            </ion-text>        
+            <ion-icon name="trending-up-outline"></ion-icon>
+
+            <ion-text color="primary" class="ion-text-center">
+              <h2>
+               Max
+              </h2>
+            </ion-text>  
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+  
+      <ion-col  size="4" >
+        <ion-card>
+          <ion-card-content>    
+            <ion-text color="primary" class="ion-text-center">
+              <h2>
+                {{weather.main.humidity}}
+              </h2>
+            </ion-text>                
+            <ion-icon name="cloud-offline-outline"></ion-icon>
+                        <ion-text color="primary" class="ion-text-center">
+                          <ion-text color="primary" class="ion-text-center">
+                            <h2>
+                             Humd
+                            </h2>
+                          </ion-text>  
+              
+            </ion-text>  
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+  
+      <ion-col  size="4" >
+        <ion-card>
+          <ion-card-content>   
+            <ion-text color="primary" class="ion-text-center">
+              <h2>
+                {{weather.wind.deg}}
+              </h2>
+            </ion-text>          
+            <ion-icon name="speedometer-outline"></ion-icon>
+            <ion-text color="primary" class="ion-text-center">
+              <h2>
+               Wind
+              </h2>
+            </ion-text>  
+          </ion-card-content>
+
+        
+
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  
+  
+
+
+    <ion-row>
+      <ion-col class="ion-align-items-center" size="12" size-lg >
+
+        <ion-card>
+          <ion-card-content>            
+                <div>
+                  <img src='https://www.mapquestapi.com/staticmap/v5/map?key=P6UqimKP8Pls9mBA4ye2Ev1kYE9lRg2e&center=
+                  {{weather.name}}&zoom=10&type=hyb&size=600,300@2x' alt="map">
+                </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    
+
+
+  </ion-grid>
 </ion-content>
+
